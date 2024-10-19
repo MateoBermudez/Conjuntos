@@ -184,7 +184,7 @@ public class Lista {
         }
     }
 
-    private boolean ValidarUniversal(Lista universal, Lista lista1) {
+    public boolean ValidarUniversal(Lista universal, Lista lista1) {
         Nodo q = lista1.head;
 
         while (q != null) {
@@ -231,8 +231,9 @@ public class Lista {
             head = head.getLiga();
             return;
         }
+        Nodo ant = head;
         Nodo p = head.getLiga();
-        Nodo ant = p;
+
         while (p != null) {
             if (p.getDato() == dato) {
                 ant.setLiga(p.getLiga());
