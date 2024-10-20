@@ -219,34 +219,125 @@ public class Main {
         while (opcionMenu != 16) {
             switch (opcionMenu) {
                 case 1:
+                    System.out.println("Ingrese los elementos del conjunto 1: ");
+                    String elementos = in.nextLine();
+                    set1 = new Sets(elementos);
+                    System.out.println("Ingrese los elementos del conjunto 2: ");
+                    elementos = in.nextLine();
+                    set2 = new Sets(elementos);
+                    System.out.println("Ingrese los elementos del conjunto universal: ");
+                    elementos = in.nextLine();
+                    universal = new Sets(elementos);
+                    if (!set1.ValidarUniversal(universal) || !set2.ValidarUniversal(universal)) {
+                        System.out.println("El conjunto universal no es correcto. ");
+                        System.out.println("Vuelva a ingresar los conjuntos. ");
+                        return;
+                    }
                     break;
                 case 2:
+                    set1.MostarConjunto();
+                    set2.MostarConjunto();
+                    universal.MostarConjunto();
                     break;
                 case 3:
+                    set1.CantElementos();
+                    set2.CantElementos();
+                    universal.CantElementos();
                     break;
                 case 4:
+                    System.out.println("Ingrese el elemento a buscar en el conjunto 1: ");
+                    int elemento = in.nextInt();
+                    in.nextLine();
+                    System.out.println("El elemento " + elemento + " pertenece al conjunto 1: " + set1.Contains(elemento));
+                    System.out.println("Ingrese el elemento a buscar en el conjunto 2: ");
+                    elemento = in.nextInt();
+                    in.nextLine();
+                    System.out.println("El elemento " + elemento + " pertenece al conjunto 2: " + set2.Contains(elemento));
+                    System.out.println("Ingrese el elemento a buscar en el conjunto universal: ");
+                    elemento = in.nextInt();
+                    in.nextLine();
+                    System.out.println("El elemento " + elemento + " pertenece al conjunto universal: " + universal.Contains(elemento));
                     break;
                 case 5:
+                    System.out.println("Ingrese el elemento a insertar al conjunto 1: ");
+                    elemento = in.nextInt();
+                    in.nextLine();
+                    set1.Insertar(elemento);
+                    System.out.println("Ingrese el elemento a insertar al conjunto 2: ");
+                    elemento = in.nextInt();
+                    in.nextLine();
+                    set2.Insertar(elemento);
                     break;
                 case 6:
+                    set3 = new Sets();
+                    set3.Union(set1, set2);
+                    set3.MostarConjunto();
                     break;
                 case 7:
+                    System.out.println("La opcion no esta disponible. ");
                     break;
                 case 8:
+                    set3 = new Sets();
+                    set3.Interseccion(set1, set2);
+                    set3.MostarConjunto();
                     break;
+
                 case 9:
+                    System.out.println("Ingrese un conjunto a comparar con el conjunto 1: ");
+                    String elementos1 = in.nextLine();
+                    set3 = new Sets(elementos1);
+                    if (set1.Igualdad(set1, set3)) {
+                        System.out.println("Los conjuntos son iguales. ");
+                    } else {
+                        System.out.println("Los conjuntos no son iguales. ");
+                    }
                     break;
                 case 10:
+                    System.out.println("Ingrese un conjunto para verificar si es subconjunto del conjunto 1: ");
+                    elementos = in.nextLine();
+                    set3 = new Sets(elementos);
+                    if (set3.Subconjunto(set1, set3)) {
+                        System.out.println("El conjunto es subconjunto del conjunto 1. ");
+                    } else {
+                        System.out.println("El conjunto no es subconjunto del conjunto 1. ");
+                    }
                     break;
                 case 11:
+                    System.out.println("Ingrese un conjunto para obtener su complemento: ");
+                    elementos = in.nextLine();
+                    set3 = new Sets(elementos);
+                    set3.Complemento(set1, universal);
+                    set3.MostarConjunto();
                     break;
                 case 12:
+                    set3 = new Sets();
+                    set3.DiferenciaSimetrica(set1, set2);
+                    set3.MostarConjunto();
                     break;
                 case 13:
+                    set3 = new Sets();
+                    set3.Diferencia(set1, set2);
+                    set3.MostarConjunto();
                     break;
                 case 14:
+                    System.out.println("Ingrese un elemento a eliminar del conjunto 1: ");
+                    int elementoEliminar = in.nextInt();
+                    in.nextLine();
+                    set1.Eliminar(elementoEliminar);
+                    System.out.println("Ingrese un elemento a eliminar del conjunto 2: ");
+                    elementoEliminar = in.nextInt();
+                    in.nextLine();
+                    set2.Eliminar(elementoEliminar);
                     break;
                 case 15:
+                    System.out.println("Ingrese un elemento a buscar en el conjunto 1: ");
+                    int elementoBuscar = in.nextInt();
+                    in.nextLine();
+                    System.out.println("El elemento " + elementoBuscar + " se encuentra en la posicion: " + set1.Posicion(elementoBuscar));
+                    System.out.println("Ingrese un elemento a buscar en el conjunto 2: ");
+                    elementoBuscar = in.nextInt();
+                    in.nextLine();
+                    System.out.println("El elemento " + elementoBuscar + " se encuentra en la posicion: " + set2.Posicion(elementoBuscar));
                     break;
                 default:
                     System.out.println("Opcion invalida. ");
